@@ -26,6 +26,7 @@ def main():
         if st.button("Submit"):
             if password == "1234":
                 st.session_state.authenticated = True
+                st.session_state.submitted = False
                 st.experimental_rerun()  # Optional: only if you want a full page refresh
             else:
                 st.error("Incorrect password. Please try again.")
