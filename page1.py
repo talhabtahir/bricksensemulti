@@ -10,7 +10,6 @@ from PIL import Image, ImageOps, ExifTags
 import numpy as np
 
 
-)
 
 # Custom CSS for additional styling
 st.markdown(
