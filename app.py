@@ -11,7 +11,7 @@ def main():
     # Set the page configuration
     st.set_page_config(
         page_title="Brick Detection App",
-        page_icon="static/brickicon8.png",
+        page_icon="static/brickicon3.png",
         layout="centered"
     )
 
