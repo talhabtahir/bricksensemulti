@@ -25,7 +25,7 @@ def main():
         password = st.text_input("Enter the password to access the app", type="password")
         
         if st.button("Submit"):
-            if password == "your_password_here":
+            if password == "5488":
                 st.session_state.authenticated = True
                 st.experimental_rerun()  # Rerun to enter the authenticated state
             else:
