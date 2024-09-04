@@ -19,8 +19,8 @@ def main():
         st.session_state.authenticated = False
 
     if not st.session_state.authenticated:
-        password = st.text_input("Enter the password to access the app", type="5488")
-        if password == "your_password_here":
+        password = st.text_input("Enter the password to access the app", type="password")
+        if password == "5488":
             st.session_state.authenticated = True
             st.experimental_rerun()  # Rerun the app to update session state
         else:
