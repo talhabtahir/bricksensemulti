@@ -27,7 +27,7 @@ def main():
         if st.button("Submit"):
             if password == "5488":
                 st.session_state.authenticated = True
-                st.experimental_rerun()  # Rerun to enter the authenticated state
+               # st.experimental_rerun()  # Rerun to enter the authenticated state
             else:
                 st.error("Incorrect password. Please try again.")
         return
