@@ -1,20 +1,11 @@
 import streamlit as st
+import tensorflow as tf
+from PIL import Image, ImageOps, ExifTags
+import numpy as np
 
 def run():
     st.title("Page 2")
     st.write("Welcome to Page 2")
-    # Add your page-specific code here
-    import streamlit as st
-    import tensorflow as tf
-    from PIL import Image, ImageOps, ExifTags
-    import numpy as np
-    
-    # Set the page configuration with favicon
-    st.set_page_config(
-        page_title="Brick Detection",
-        page_icon="static/brickicon3.png",  # Path to your favicon file
-        layout="centered"
-    )
     
     # Custom CSS for additional styling
     st.markdown(
@@ -179,7 +170,7 @@ def run():
                         if predicted_class == 0:
                             st.success(f"✅ This is a normal wall.")
                         elif predicted_class == 1:
-                            st.error(f"⚠️ This wall is cracked.")
+                            st.error(f"❌ This wall is cracked.")
                         elif predicted_class == 2:
                             st.warning(f"⚠️ This is not a wall.")
                         else:
