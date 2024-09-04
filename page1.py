@@ -1,13 +1,15 @@
 import streamlit as st
+
+def run():
+    st.title("Page 1")
+    st.write("Welcome to Page 1")
+
+import streamlit as st
 import tensorflow as tf
 from PIL import Image, ImageOps, ExifTags
 import numpy as np
 
-# Set the page configuration with favicon
-st.set_page_config(
-    page_title="Brick Detection",
-    page_icon="static/brickicon3.png",  # Path to your favicon file
-    layout="centered"
+
 )
 
 # Custom CSS for additional styling
