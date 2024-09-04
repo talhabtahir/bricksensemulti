@@ -28,23 +28,24 @@ def main():
             if password == "5488":
                 st.session_state.authenticated = True
                # st.experimental_rerun()  # Rerun to enter the authenticated state
+        
+
+               # Display the main content if authenticated
+               st.sidebar.title("Navigation")
+               page = st.sidebar.radio("Go to", list(PAGES.keys()))
+
+       # Import and run the selected page dynamically
+               page_module = PAGES[page]
+               try:
+                 page_app = __import__(page_module)
+                 page_app.run()  # Ensure each page module has a run() function
+               except ModuleNotFoundError:
+                    st.error("Page not found. Please check the page configuration.")
+               except Exception as e:
+                    st.error(f"An error occurred: {e}")
             else:
                 st.error("Incorrect password. Please try again.")
         return
-
-    # Display the main content if authenticated
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", list(PAGES.keys()))
-
-    # Import and run the selected page dynamically
-    page_module = PAGES[page]
-    try:
-        page_app = __import__(page_module)
-        page_app.run()  # Ensure each page module has a run() function
-    except ModuleNotFoundError:
-        st.error("Page not found. Please check the page configuration.")
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-
+        
 if __name__ == "__main__":
     main()
