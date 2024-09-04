@@ -129,7 +129,7 @@ def run():
                     if predicted_class == 0:
                         st.success(f"✅ This is a normal wall.")
                     elif predicted_class == 1:
-                        st.error(f"⚠️ This wall is cracked.")
+                        st.error(f"❌ This wall is cracked.")
                     elif predicted_class == 2:
                         st.warning(f"⚠️ This is not a wall.")
                     else:
