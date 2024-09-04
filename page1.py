@@ -1,16 +1,9 @@
 import streamlit as st
+import tensorflow as tf
+from PIL import Image, ImageOps, ExifTags
+import numpy as np
 
 def run():
-    st.title("Page 1")
-    st.write("Welcome to Page 1")
-
-    import streamlit as st
-    import tensorflow as tf
-    from PIL import Image, ImageOps, ExifTags
-    import numpy as np
-    
-    
-    
     # Custom CSS for additional styling
     st.markdown(
         """
