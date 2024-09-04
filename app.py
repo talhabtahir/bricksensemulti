@@ -14,36 +14,38 @@ def main():
         layout="centered"
     )
     
-    # Authentication (example: simple password protection)
+    # Initialize session state for authentication
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
 
+    # Authentication
     if not st.session_state.authenticated:
         password = st.text_input("Enter the password to access the app", type="password")
-        if password == "5488":
-            st.session_state.authenticated = True
-            st.experimental_rerun()  # Rerun the app to update session state
-        else:
-            st.error("Incorrect password. Please try again.")
-            return
+        if st.button("Submit"):
+            if password == "your_password_here":
+                st.session_state.authenticated = True
+                st.experimental_rerun()  # Optional: only if you need to force a full rerun
+            else:
+                st.error("Incorrect password. Please try again.")
+        return
 
     # Navigation
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Go to", list(PAGES.keys()))
 
-    # Load the appropriate page
+    # Display content based on the page selection and access control
     if page == "Page 1":
-        if "access_page_1" in st.session_state and st.session_state.access_page_1:
+        if st.session_state.authenticated:
             import page1
         else:
             st.warning("You do not have access to this page.")
     elif page == "Page 2":
-        if "access_page_2" in st.session_state and st.session_state.access_page_2:
+        if st.session_state.authenticated:
             import page2
         else:
             st.warning("You do not have access to this page.")
     elif page == "Page 3":
-        if "access_page_3" in st.session_state and st.session_state.access_page_3:
+        if st.session_state.authenticated:
             import page3
         else:
             st.warning("You do not have access to this page.")
