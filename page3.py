@@ -6,7 +6,7 @@ import numpy as np
 import torch
 import cv2
 
-def run()
+def run():
     # Custom CSS for additional styling
     st.markdown(
         """
