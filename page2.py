@@ -49,7 +49,7 @@ def run():
     
     @st.cache_resource
     def load_model():
-        return tf.keras.models.load_model('model_cp_epoch_30.keras')
+        return tf.keras.models.load_model('170kmodelv3_version_cam_1.keras')
     
     model = load_model()
     
