@@ -15,25 +15,20 @@ def main():
         layout="centered"
     )
     
-    # Initialize session state for authentication and submission tracking
+    # Initialize session state for authentication
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
-
-    if 'submitted' not in st.session_state:
-        st.session_state.submitted = False
 
     # Display authentication form if not authenticated
     if not st.session_state.authenticated:
         st.title("Authentication")
         password = st.text_input("Enter the password to access the app", type="password")
         
-        if st.button("Submit") or st.session_state.submitted:
-            if password == "5488":
+        if st.button("Submit"):
+            if password == "your_password_here":
                 st.session_state.authenticated = True
-                st.session_state.submitted = False  # Reset submission state after successful login
-               # st.experimental_rerun()  # Rerun to enter the authenticated state
+                st.experimental_rerun()  # Rerun to enter the authenticated state
             else:
-                st.session_state.submitted = True
                 st.error("Incorrect password. Please try again.")
         return
 
