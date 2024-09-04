@@ -4,9 +4,6 @@ from PIL import Image, ImageOps, ExifTags
 import numpy as np
 
 def run():
-    st.title("Page 2")
-    st.write("Welcome to Page 2")
-    
     # Custom CSS for additional styling
     st.markdown(
         """
