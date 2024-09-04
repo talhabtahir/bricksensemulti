@@ -45,7 +45,7 @@ st.markdown("<h1 class='main-header'>🧱 Brick Crack Detection 🧱</h1>", unsa
 
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model('Kg_33kmodelv36_basev4.keras')
+    return tf.keras.models.load_model('Kg_33kmodelv37_basev4.keras')
 
 @st.cache_resource
 def load_yolo_model():
