@@ -9,14 +9,14 @@ import cv2
 # Set the page configuration with favicon
 st.set_page_config(
     page_title="Brick Crack Detection",
-    page_icon="static/brickicon6.png",  # Path to your favicon file
+    page_icon="static/brickicon3.png",  # Path to your favicon file
     layout="centered"
 )
 
 # Custom CSS for additional styling
 st.markdown(
     """
-    <link rel="icon" href="static/brickicon6.png" type="image/x-icon">
+    <link rel="icon" href="static/brickicon3.png" type="image/x-icon">
     <style>
         .reportview-container {
             background-color: #f7f9fc;
