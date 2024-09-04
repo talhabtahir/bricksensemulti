@@ -18,9 +18,9 @@ def main():
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
     def initialize_access_permissions():
-    st.session_state.access_page_1 = True  # Set access to True or False based on your requirements
-    st.session_state.access_page_2 = True
-    st.session_state.access_page_3 = True
+        st.session_state.access_page_1 = True  # Set access to True or False based on your requirements
+        st.session_state.access_page_2 = False
+        st.session_state.access_page_3 = True
 
     initialize_access_permissions()
 
