@@ -49,7 +49,7 @@ def run():
     # Sidebar for app information
     st.sidebar.header("About This App")
     st.sidebar.write("""
-    The Brick Crack Detection App is a powerful tool designed to automatically detect cracks 
+    Ththis version of BrickSense App is a powerful tool designed to automatically detect cracks 
     in brick walls, leveraging cutting-edge deep learning technique. Built using a Convolutional 
     Neural Network (CNN) model pre-trained on a dataset of more than 150,000 images, the app 
     specializes in identifying structural defects in brick walls with high accuracy. The app 
