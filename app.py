@@ -8,21 +8,29 @@ st.set_page_config(
     layout="centered"
 )
 
-# Define the pages
+# Define the pages with corresponding icons
 PAGES = {
-    "Page 1": "page1",
-    "Page 2": "page2",
-    "Page 3": "page3"
+    "Single Picture ☝️": "page1",
+    "Single & Multi ✌️": "page2",
+    "Single with YOLOv5/Resnet50 🙌": "page3"
 }
 
 def main():
     # Initialize session state for page selection
     if 'selected_page' not in st.session_state:
-        st.session_state.selected_page = "Page 1"  # Default to Page 1
+        st.session_state.selected_page = list(PAGES.keys())[0]  # Default to the first page
 
-    # Display the main content
+    # Sidebar navigation with icons
     st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
+    st.sidebar.markdown("### Select a Page:")
+    
+    # Use selectbox for better user experience
+    page = st.sidebar.selectbox(
+        "Choose a page to visit:",
+        list(PAGES.keys()),
+        index=list(PAGES.keys()).index(st.session_state.selected_page)
+    )
+    
     st.session_state.selected_page = page
 
     # Dynamically import and run the selected page
@@ -39,6 +47,16 @@ def main():
 def add_custom_css():
     st.markdown("""
         <style>
+        /* Customize the sidebar navigation */
+        .css-1vbd788, .stSelectbox {
+            font-size: 18px;
+            color: #2E8B57;
+        }
+        .stSelectbox>div {
+            background-color: #F0F8FF;
+            border-radius: 5px;
+            padding: 5px;
+        }
         .stButton>button {
             background-color: #4CAF50;
             color: white;
@@ -55,3 +73,4 @@ def add_custom_css():
 if __name__ == "__main__":
     add_custom_css()  # Add custom styles
     main()
+
