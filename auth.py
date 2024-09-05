@@ -15,11 +15,7 @@ def authenticate():
 
 def check_authentication():
     """Check if the user is authenticated. If not, prompt for authentication."""
-    if 'authenticated' not in st.session_state:
-        st.session_state.authenticated = False
-    if 'authenticating' not in st.session_state:
-        st.session_state.authenticating = True
-    if not st.session_state.authenticated:
+    if 'authenticated' not in st.session_state or not st.session_state.authenticated:
         st.session_state.authenticating = True
     if st.session_state.authenticating:
         authenticate()
