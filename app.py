@@ -39,7 +39,7 @@ def main():
 
     # Check if the user is authenticated
     if st.session_state.authenticated:
-        # Redirect directly to Page 1 without requiring a button press
+        # Skip authentication and redirect to Page 1
         st.session_state.selected_page = "Page 1"
     else:
         # Display authentication form if not authenticated
@@ -49,7 +49,10 @@ def main():
     # Display the main content if authenticated
     st.sidebar.title("Navigation")
     
-    # Automatically navigate to the selected page after authentication
+    # Automatically display the selected page (Page 1 after authentication)
+    if st.session_state.selected_page == "Page 1":
+        st.sidebar.write("Redirected to Page 1")
+
     page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
 
     # Update the selected page in session state
