@@ -4,7 +4,7 @@ import importlib
 # Configure the main page
 st.set_page_config(
     page_title="Brick Detection App",
-    page_icon="static/brickicon8.png",
+    page_icon="static/brickicon3.png",
     layout="centered"
 )
 
