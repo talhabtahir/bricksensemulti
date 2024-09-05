@@ -1,4 +1,5 @@
 import streamlit as st
+import importlib
 
 # Define the pages
 PAGES = {
@@ -7,6 +8,20 @@ PAGES = {
     "Page 3": "page3"
 }
 
+# Authentication function
+def authenticate():
+    """Handle authentication with a password check."""
+    st.title("Authentication")
+    password = st.text_input("Enter the password to access the app", type="password")
+    
+    if st.button("Submit"):
+        if password == "1234":
+            st.session_state.authenticated = True
+            st.experimental_rerun()  # Re-run after authentication
+        else:
+            st.error("Incorrect password. Please try again.")
+
+# Main function
 def main():
     # Configure the main page
     st.set_page_config(
@@ -21,32 +36,40 @@ def main():
 
     # Display authentication form if not authenticated
     if not st.session_state.authenticated:
-        st.title("Authentication")
-        password = st.text_input("Enter the password to access the app", type="password")
-        
-        # Handle submission logic in the same block
-        if st.button("Submit"):
-            if password == "1234":
-                st.session_state.authenticated = True
-            else:
-                st.error("Incorrect password. Please try again.")
-        if st.session_state.authenticated:
-            st.experimental_rerun()  # Rerun once authenticated, but after the whole block is processed
+        authenticate()
         return
 
     # Display the main content if authenticated
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Go to", list(PAGES.keys()))
 
-    # Import and run the selected page dynamically
+    # Dynamically import and run the selected page
     page_module = PAGES[page]
     try:
-        page_app = __import__(page_module)
+        page_app = importlib.import_module(page_module)
         page_app.run()  # Ensure each page module has a run() function
     except ModuleNotFoundError:
         st.error("Page not found. Please check the page configuration.")
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
+# Apply custom CSS for UI improvements
+def add_custom_css():
+    st.markdown("""
+        <style>
+        .stButton>button {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .stTextInput>input {
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
 if __name__ == "__main__":
+    add_custom_css()  # Add custom styles
     main()
