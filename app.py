@@ -25,7 +25,6 @@ def authenticate():
             st.session_state.authenticated = True
             st.session_state.selected_page = "Page 1"  # Automatically set to Page 1 after authentication
             st.success("Authenticated successfully! Redirecting to Page 1...")
-            st.session_state.redirected = True
         else:
             st.error("Incorrect password. Please try again.")
 
@@ -35,33 +34,25 @@ def main():
         st.session_state.authenticated = False
     if 'selected_page' not in st.session_state:
         st.session_state.selected_page = "Page 1"  # Default to Page 1
-    if 'redirected' not in st.session_state:
-        st.session_state.redirected = False
 
-    # Check if the user is authenticated
-    if not st.session_state.authenticated:
-        authenticate()
+    if st.session_state.authenticated:
+        # Display the main content if authenticated
+        st.sidebar.title("Navigation")
+        page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
+        st.session_state.selected_page = page
+
+        # Dynamically import and run the selected page
+        page_module = PAGES[page]
+        try:
+            page_app = importlib.import_module(page_module)
+            page_app.run()  # Ensure each page module has a run() function
+        except ModuleNotFoundError:
+            st.error("Page not found. Please check the page configuration.")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
     else:
-        if st.session_state.redirected:
-            # Handle automatic redirection to Page 1
-            st.session_state.redirected = False  # Reset the redirected flag
-        else:
-            # Display the main content if authenticated
-            st.sidebar.title("Navigation")
-            page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
-
-            # Update the selected page in session state
-            st.session_state.selected_page = page
-
-            # Dynamically import and run the selected page
-            page_module = PAGES[page]
-            try:
-                page_app = importlib.import_module(page_module)
-                page_app.run()  # Ensure each page module has a run() function
-            except ModuleNotFoundError:
-                st.error("Page not found. Please check the page configuration.")
-            except Exception as e:
-                st.error(f"An error occurred: {e}")
+        # Display authentication form if not authenticated
+        authenticate()
 
 # Apply custom CSS for UI improvements
 def add_custom_css():
