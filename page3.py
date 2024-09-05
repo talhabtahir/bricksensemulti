@@ -237,5 +237,3 @@ def run():
         
         # Footer
         st.markdown("<div class='footer'>Developed with Streamlit & TensorFlow | © 2024 BrickSense</div>", unsafe_allow_html=True)
-    else:
-        st.write("Please authenticate to access this page.")
