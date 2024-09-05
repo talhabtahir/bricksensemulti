@@ -8,9 +8,6 @@ import cv2
 from auth import check_authentication
 
 def run():
-    check_authentication()  # Check authentication before displaying page content
-    
-    if 'authenticated' in st.session_state and st.session_state.authenticated:
         # Custom CSS for additional styling
         st.markdown(
             """
