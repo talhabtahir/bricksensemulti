@@ -10,9 +10,9 @@ st.set_page_config(
 
 # Define the pages with corresponding icons
 PAGES = {
-    "Single Picture ☝️": "page1",
-    "Single & Multi ✌️": "page2",
-    "Single with YOLOv5/Resnet50 ✋": "page3"
+    "BrickSense Single ☝️": "page1",
+    "BrickSense Multiple ✌️": "page2",
+    "BrickSense Augmented ✋": "page3"
 }
 
 def main():
