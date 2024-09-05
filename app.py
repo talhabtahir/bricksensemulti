@@ -25,8 +25,7 @@ def authenticate():
         if password == "1234":
             st.session_state.authenticated = True
             st.session_state.selected_page = "Page 1"  # Automatically set to Page 1 after authentication
-            st.success("Authenticated successfully! Redirecting to Page 1...")
-            st.experimental_rerun()  # Trigger rerun to redirect to Page 1
+            st.success("Authenticated successfully!.")
         else:
             st.error("Incorrect password. Please try again.")
 
@@ -45,6 +44,12 @@ def main():
 
     # Display the main content if authenticated
     st.sidebar.title("Navigation")
+    
+    # Automatically show "Page 1" when authenticated for the first time
+    if st.session_state.selected_page == "Page 1" and st.session_state.authenticated:
+        st.write("Redirecting to Page 1...")
+    
+    # Navigation for selecting pages
     page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
 
     # Update the selected page in session state
