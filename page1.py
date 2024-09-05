@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image, ImageOps, ExifTags
 import numpy as np
+from auth import check_authentication
 
 def run():
     # Custom CSS for additional styling
