@@ -17,24 +17,34 @@ PAGES = {
 }
 
 def main():
-    # Initialize session state for page selection
+    # Initialize session state for page selection and authentication
+    if 'authenticated' not in st.session_state:
+        st.session_state.authenticated = False
+    if 'authenticating' not in st.session_state:
+        st.session_state.authenticating = True
     if 'selected_page' not in st.session_state:
         st.session_state.selected_page = "Page 1"  # Default to Page 1
 
-    # Display the main content if authenticated
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
-    st.session_state.selected_page = page
+    if st.session_state.authenticating:
+        check_authentication()  # Check and handle authentication
+        if not st.session_state.authenticating:
+            st.session_state.selected_page = "Page 1"  # Set default page
+            st.experimental_rerun()  # Rerun to clear authentication form after successful login
+    else:
+        # Display the main content if authenticated
+        st.sidebar.title("Navigation")
+        page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
+        st.session_state.selected_page = page
 
-    # Dynamically import and run the selected page
-    page_module = PAGES[page]
-    try:
-        page_app = importlib.import_module(page_module)
-        page_app.run()  # Ensure each page module has a run() function
-    except ModuleNotFoundError:
-        st.error("Page not found. Please check the page configuration.")
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
+        # Dynamically import and run the selected page
+        page_module = PAGES[page]
+        try:
+            page_app = importlib.import_module(page_module)
+            page_app.run()  # Ensure each page module has a run() function
+        except ModuleNotFoundError:
+            st.error("Page not found. Please check the page configuration.")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
 
 # Apply custom CSS for UI improvements
 def add_custom_css():
