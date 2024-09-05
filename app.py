@@ -15,7 +15,6 @@ PAGES = {
     "Page 3": "page3"
 }
 
-# Authentication function
 def authenticate():
     """Handle authentication with a password check."""
     st.title("Authentication")
@@ -26,47 +25,43 @@ def authenticate():
             st.session_state.authenticated = True
             st.session_state.selected_page = "Page 1"  # Automatically set to Page 1 after authentication
             st.success("Authenticated successfully! Redirecting to Page 1...")
+            st.session_state.redirected = True
         else:
             st.error("Incorrect password. Please try again.")
 
-# Main function
 def main():
     # Initialize session state for authentication and page selection
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
     if 'selected_page' not in st.session_state:
         st.session_state.selected_page = "Page 1"  # Default to Page 1
+    if 'redirected' not in st.session_state:
+        st.session_state.redirected = False
 
     # Check if the user is authenticated
-    if st.session_state.authenticated:
-        # Skip authentication and redirect to Page 1
-        st.session_state.selected_page = "Page 1"
-    else:
-        # Display authentication form if not authenticated
+    if not st.session_state.authenticated:
         authenticate()
-        return  # Exit to avoid showing the rest of the app before authentication
+    else:
+        if st.session_state.redirected:
+            # Handle automatic redirection to Page 1
+            st.session_state.redirected = False  # Reset the redirected flag
+        else:
+            # Display the main content if authenticated
+            st.sidebar.title("Navigation")
+            page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
 
-    # Display the main content if authenticated
-    st.sidebar.title("Navigation")
-    
-    # Automatically display the selected page (Page 1 after authentication)
-    if st.session_state.selected_page == "Page 1":
-        st.sidebar.write("Redirected to Page 1")
+            # Update the selected page in session state
+            st.session_state.selected_page = page
 
-    page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
-
-    # Update the selected page in session state
-    st.session_state.selected_page = page
-
-    # Dynamically import and run the selected page
-    page_module = PAGES[page]
-    try:
-        page_app = importlib.import_module(page_module)
-        page_app.run()  # Ensure each page module has a run() function
-    except ModuleNotFoundError:
-        st.error("Page not found. Please check the page configuration.")
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
+            # Dynamically import and run the selected page
+            page_module = PAGES[page]
+            try:
+                page_app = importlib.import_module(page_module)
+                page_app.run()  # Ensure each page module has a run() function
+            except ModuleNotFoundError:
+                st.error("Page not found. Please check the page configuration.")
+            except Exception as e:
+                st.error(f"An error occurred: {e}")
 
 # Apply custom CSS for UI improvements
 def add_custom_css():
