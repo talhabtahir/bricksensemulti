@@ -5,6 +5,7 @@ from PIL import Image, ImageOps, ExifTags
 import numpy as np
 import torch
 import cv2
+from auth import check_authentication
 
 def run():
     check_authentication()  # Check authentication before displaying page content
