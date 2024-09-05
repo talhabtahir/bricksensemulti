@@ -1,6 +1,13 @@
 import streamlit as st
 import importlib
 
+# Configure the main page (this must be called at the start, before other Streamlit functions)
+st.set_page_config(
+    page_title="Brick Detection App",
+    page_icon="static/brickicon8.png",
+    layout="centered"
+)
+
 # Define the pages
 PAGES = {
     "Page 1": "page1",
@@ -23,13 +30,6 @@ def authenticate():
 
 # Main function
 def main():
-    # Configure the main page
-    st.set_page_config(
-        page_title="Brick Detection App",
-        page_icon="static/brickicon8.png",
-        layout="centered"
-    )
-    
     # Initialize session state for authentication
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
