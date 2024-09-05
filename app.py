@@ -25,7 +25,7 @@ def authenticate():
         if password == "1234":
             st.session_state.authenticated = True
             st.session_state.selected_page = "Page 1"  # Automatically set to Page 1 after authentication
-            st.success("Authenticated successfully!.")
+            st.success("Authenticated successfully! Redirecting to Page 1...")
         else:
             st.error("Incorrect password. Please try again.")
 
@@ -37,19 +37,19 @@ def main():
     if 'selected_page' not in st.session_state:
         st.session_state.selected_page = "Page 1"  # Default to Page 1
 
-    # Display authentication form if not authenticated
-    if not st.session_state.authenticated:
+    # Check if the user is authenticated
+    if st.session_state.authenticated:
+        # Redirect directly to Page 1 without requiring a button press
+        st.session_state.selected_page = "Page 1"
+    else:
+        # Display authentication form if not authenticated
         authenticate()
         return  # Exit to avoid showing the rest of the app before authentication
 
     # Display the main content if authenticated
     st.sidebar.title("Navigation")
     
-    # Automatically show "Page 1" when authenticated for the first time
-    if st.session_state.selected_page == "Page 1" and st.session_state.authenticated:
-        st.write("Redirecting to Page 1...")
-    
-    # Navigation for selecting pages
+    # Automatically navigate to the selected page after authentication
     page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
 
     # Update the selected page in session state
