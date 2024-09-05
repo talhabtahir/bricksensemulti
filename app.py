@@ -12,7 +12,7 @@ st.set_page_config(
 PAGES = {
     "Single Picture ☝️": "page1",
     "Single & Multi ✌️": "page2",
-    "Single with YOLOv5/Resnet50 🙌": "page3"
+    "Single with YOLOv5/Resnet50 ✋": "page3"
 }
 
 def main():
