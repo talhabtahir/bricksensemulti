@@ -104,9 +104,9 @@ def run():
     if upload_option == "Single Image":
         file = st.file_uploader("Please upload an image of the brick wall", type=("jpg", "png", "jpeg", "bmp", "tiff", "webp"))
         # Check if a file was uploaded
-        if not files:
+        if not file:
             st.info("Please upload an image file to start the detection.")
-        elif files:
+        elif file:
             try:
                 # Display the uploaded image
                 image = Image.open(file)
@@ -144,9 +144,9 @@ def run():
     elif upload_option == "Multiple Images":
         files = st.file_uploader("Please upload images of the brick wall", type=("jpg", "png", "jpeg", "bmp", "tiff", "webp"), accept_multiple_files=True)
         # Check if a file was uploaded
-        if files is None:
+        if not files:
             st.info("Please upload an image file to start the detection.")
-        elif files is not None:
+        elif files:
             for file in files:
                 try:
                     # Display the uploaded image
