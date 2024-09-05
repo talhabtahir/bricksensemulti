@@ -58,9 +58,7 @@ def run():
         # Sidebar for app information
         st.sidebar.header("About This App")
         st.sidebar.write("""
-        This app uses a Convolutional Neural Network (CNN) model to detect cracks in brick walls. 
-        You can upload an image of a brick wall, and the app will analyze the image to determine if the wall is cracked or normal. 
-        The output will provide a predicted class and the probability of the wall being cracked or normal.
+This version of BrickSense is a powerful and intelligent image processing tool designed to detect cracks in brick walls using cutting-edge machine learning techniques. The app integrates YOLOv5 and ResNet50, two state-of-the-art deep learning models, to classify if the uploaded image contains a wall or not. Once the wall has been classified, the app passes the image to a robust the pre-trained Convolutional Neural Network (CNN) framework specialized in crack detection. The app is capable of analyzing a single image at a time and provides fast, reliable results, ensuring high accuracy in detecting cracks on brick walls.
         """)
         st.sidebar.write("""
         **Developed by:**  
