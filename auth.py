@@ -1,7 +1,8 @@
 import streamlit as st
-
+print("auth.py imported")
 def authenticate():
     """Handle authentication with a password check."""
+    print("authenticate() called")
     st.title("Authentication")
     password = st.text_input("Enter the password to access this page", type="password")
     
