@@ -24,16 +24,19 @@ def authenticate():
     if st.button("Submit"):
         if password == "1234":
             st.session_state.authenticated = True
-            st.success("Authenticated successfully!")
-            return  # Exit after successful authentication
+            st.session_state.selected_page = "Page 1"  # Automatically set to Page 1 after authentication
+            st.success("Authenticated successfully! Redirecting to Page 1...")
+            st.experimental_rerun()  # Trigger rerun to redirect to Page 1
         else:
             st.error("Incorrect password. Please try again.")
 
 # Main function
 def main():
-    # Initialize session state for authentication
+    # Initialize session state for authentication and page selection
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
+    if 'selected_page' not in st.session_state:
+        st.session_state.selected_page = "Page 1"  # Default to Page 1
 
     # Display authentication form if not authenticated
     if not st.session_state.authenticated:
@@ -42,7 +45,10 @@ def main():
 
     # Display the main content if authenticated
     st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", list(PAGES.keys()))
+    page = st.sidebar.radio("Go to", list(PAGES.keys()), index=list(PAGES.keys()).index(st.session_state.selected_page))
+
+    # Update the selected page in session state
+    st.session_state.selected_page = page
 
     # Dynamically import and run the selected page
     page_module = PAGES[page]
