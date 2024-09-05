@@ -1,8 +1,7 @@
 import streamlit as st
-print("auth.py imported")
+
 def authenticate():
     """Handle authentication with a password check."""
-    print("authenticate() called")
     st.title("Authentication")
     password = st.text_input("Enter the password to access this page", type="password")
     
@@ -16,7 +15,11 @@ def authenticate():
 
 def check_authentication():
     """Check if the user is authenticated. If not, prompt for authentication."""
-    if 'authenticated' not in st.session_state or not st.session_state.authenticated:
+    if 'authenticated' not in st.session_state:
+        st.session_state.authenticated = False
+    if 'authenticating' not in st.session_state:
+        st.session_state.authenticating = True
+    if not st.session_state.authenticated:
         st.session_state.authenticating = True
     if st.session_state.authenticating:
         authenticate()
