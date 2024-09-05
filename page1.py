@@ -49,8 +49,12 @@ def run():
     # Sidebar for app information
     st.sidebar.header("About This App")
     st.sidebar.write("""
-    This app uses a Convolutional Neural Network (CNN) model to detect brick walls and classify them as either normal, cracked, or not a wall. 
-    You can upload an image, and the app will analyze it to provide a prediction.
+    The Brick Crack Detection App is a powerful tool designed to automatically detect cracks 
+    in brick walls, leveraging cutting-edge deep learning technique. Built using a Convolutional 
+    Neural Network (CNN) model pre-trained on a dataset of around 200,000 images, the app 
+    specializes in identifying structural defects in brick walls with high accuracy. The app 
+    can analyze and classify a single image at a time, under three categoies namely noraml, cracked 
+    and not a wall, making it easy for users to quickly check the condition of brick structures in real-time.
     """)
     st.sidebar.write("""
     **Developed by:**  
