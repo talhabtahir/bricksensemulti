@@ -1,7 +1,7 @@
 import streamlit as st
 import importlib
 
-# Configure the main page (this must be called at the start, before other Streamlit functions)
+# Configure the main page (must be called first)
 st.set_page_config(
     page_title="Brick Detection App",
     page_icon="static/brickicon8.png",
@@ -24,7 +24,8 @@ def authenticate():
     if st.button("Submit"):
         if password == "1234":
             st.session_state.authenticated = True
-            st.experimental_rerun()  # Re-run after authentication
+            st.success("Authenticated successfully!")
+            return  # Exit after successful authentication
         else:
             st.error("Incorrect password. Please try again.")
 
@@ -37,7 +38,7 @@ def main():
     # Display authentication form if not authenticated
     if not st.session_state.authenticated:
         authenticate()
-        return
+        return  # Exit to avoid showing the rest of the app before authentication
 
     # Display the main content if authenticated
     st.sidebar.title("Navigation")
