@@ -35,7 +35,7 @@ def run():
         )
         
         # Header with an icon
-        st.markdown("<h1 class='main-header'>🧱 Brick Crack Detection 🧱</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 class='main-header'>🧱 Brick Cracks Detection 🧱</h1>", unsafe_allow_html=True)
         
         @st.cache_resource
         def load_model():
