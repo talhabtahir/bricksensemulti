@@ -42,17 +42,26 @@ def run():
         # st.image(imagelogo, use_column_width=True, width=700)  # Update the path to your logo file
         # Create a custom div with CSS to center the image
         # Display logo instead of header
+        # Display logo instead of header
         imagelogo = Image.open("static/header3r.png")
         
-        # Create a custom div with CSS to center the image
+        # Use markdown to center the image
         st.markdown(
             """
-            <div style="display: flex; justify-content: center;">
-                <img src="static/header3r.png" alt="Logo" style="width:700px;">
-            </div>
+            <style>
+            .centered-image {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 700px; /* Set the width manually */
+            }
+            </style>
             """,
             unsafe_allow_html=True
         )
+        
+        # Now display the image using st.image with the width parameter set to None to avoid stretching
+        st.image(imagelogo, width=None, caption="", output_format="auto", use_column_width=False)
 
         # Add space below the logo
         st.write("")  # Creates a blank line
