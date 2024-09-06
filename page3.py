@@ -53,7 +53,7 @@ def run():
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
-                width: 700px; /* Set the width manually */
+                width: 300px; /* Set the width manually */
             }
             </style>
             """,
