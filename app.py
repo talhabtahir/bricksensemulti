@@ -21,7 +21,7 @@ def main():
         st.session_state.selected_page = list(PAGES.keys())[0]  # Default to the first page
 
     # Sidebar navigation with icons
-    st.sidebar.image("static/crackedwall.png", use_column_width=True)
+    st.sidebar.image("static/crackedwall1.png", use_column_width=True)
     st.sidebar.title("Navigation")
     st.sidebar.markdown("### Select a Page:")
     
