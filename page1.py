@@ -47,7 +47,7 @@ def run():
     model = load_model()
     
     # Sidebar for app information
-   with st.sidebar.expander("About the Version"):
+    with st.sidebar.expander("About the Version"):
         st.sidebar.write("""
         This version of BrickSense App is a powerful tool designed to automatically detect cracks 
         in brick walls, leveraging cutting-edge deep learning technique. Built using a Convolutional 
