@@ -47,20 +47,20 @@ def run():
     model = load_model()
     
     # Sidebar for app information
-    st.sidebar.header("About This App")
-    st.sidebar.write("""
-    This version of BrickSense App is a powerful tool designed to automatically detect cracks 
-    in brick walls, leveraging cutting-edge deep learning technique. Built using a Convolutional 
-    Neural Network (CNN) model pre-trained on a dataset of more than 150,000 images, the app 
-    specializes in identifying structural defects in brick walls with high accuracy. The app 
-    can analyze and classify a single image at a time, under three categoies namely noraml, cracked 
-    and not a wall, making it easy for users to quickly check the condition of brick structures in real-time.
-    """)
-    st.sidebar.write("""
-    **Developed by:**  
-    Talha Bin Tahir  
-    **Email:** talhabtahir@gmail.com
-    """)
+   with st.sidebar.expander("About the Version"):
+        st.sidebar.write("""
+        This version of BrickSense App is a powerful tool designed to automatically detect cracks 
+        in brick walls, leveraging cutting-edge deep learning technique. Built using a Convolutional 
+        Neural Network (CNN) model pre-trained on a dataset of more than 150,000 images, the app 
+        specializes in identifying structural defects in brick walls with high accuracy. The app 
+        can analyze and classify a single image at a time, under three categoies namely noraml, cracked 
+        and not a wall, making it easy for users to quickly check the condition of brick structures in real-time.
+        """)
+        st.sidebar.write("""
+        **Developed by:**  
+        Talha Bin Tahir  
+        **Email:** talhabtahir@gmail.com
+        """)
     
     # Main area for image upload
     file = st.file_uploader("Please upload an image of the brick wall", type=("jpg", "png", "jpeg", "bmp", "tiff", "webp"))
