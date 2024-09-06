@@ -45,6 +45,7 @@ def run():
     )
     
     # Display logo instead of header
+    imagelogo = Image.open("static/header2r.png")
     st.image("static/header2r.png", use_column_width=True)  # Update the path to your logo file
 
     # Add space below the logo
