@@ -22,7 +22,7 @@ def main():
 
    
     # Sidebar navigation with icons
-    st.sidebar.image("static/crackedwall1.png", width=200)
+    st.sidebar.image("static/crackedwall1.png", width=200, use_column_width=True)
     st.sidebar.title("Navigation")
     st.sidebar.markdown("### Select a Page:")
     
