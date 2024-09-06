@@ -36,14 +36,8 @@ def run():
     # st.markdown("<h1 class='main-header'>🧱 Brick Cracks Detection 🧱</h1>", unsafe_allow_html=True)
   
     # Header with an image (centered)
-    st.markdown(
-        """
-        <div style="text-align: center;">
-            <img src="static/header1r.png" alt="Brick Cracks Detection" style="width:300px;">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    # Display logo instead of header
+    st.image("static/header1r.png", use_column_width=True)  # Update the path to your logo file
     
     @st.cache_resource
     def load_model():
