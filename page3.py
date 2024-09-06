@@ -39,7 +39,7 @@ def run():
         # st.markdown("<h1 class='main-header'>🧱 Brick Detection 🧱</h1>", unsafe_allow_html=True)
         # Display logo instead of header
         imagelogo = Image.open("static/header3r.png")
-        st.image(imagelogo, use_column_width=True)  # Update the path to your logo file
+        st.image(imagelogo, use_column_width=True, width=100)  # Update the path to your logo file
 
         # Add space below the logo
         st.write("")  # Creates a blank line
