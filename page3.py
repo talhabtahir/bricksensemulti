@@ -38,7 +38,7 @@ def run():
         # Header with an icon
         # st.markdown("<h1 class='main-header'>🧱 Brick Detection 🧱</h1>", unsafe_allow_html=True)
         # Display logo instead of header
-        imagelogo = Image.open("static/header3r.png")
+        imagelogo = Image.open("static/head3.png")
         st.image(imagelogo, use_column_width=True, width=600)  # Update the path to your logo file
 
         # Add space below the logo
