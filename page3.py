@@ -38,13 +38,13 @@ def run():
         # Header with an icon
         # st.markdown("<h1 class='main-header'>🧱 Brick Detection 🧱</h1>", unsafe_allow_html=True)
         # # Display logo instead of header
-        # imagelogo = Image.open("static/header3r.png")
+        imagelogo = Image.open("static/header3r.png")
         # st.image(imagelogo, use_column_width=True, width=700)  # Update the path to your logo file
         # Create a custom div with CSS to center the image
         st.markdown(
             """
             <div style="display: flex; justify-content: center;">
-                <img src="static/header3r.png" alt="Logo" style="width:700px;">
+                <img src="imagelogo" alt="Logo" style="width:700px;">
             </div>
             """,
             unsafe_allow_html=True
