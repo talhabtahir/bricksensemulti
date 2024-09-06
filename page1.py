@@ -38,7 +38,7 @@ def run():
     # Header with an image (centered)
     # Display logo instead of header
     st.image("static/header1.png", use_column_width=True)  # Update the path to your logo file
-    
+    st.empty()
     @st.cache_resource
     def load_model():
         try:
