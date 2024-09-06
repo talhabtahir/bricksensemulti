@@ -39,7 +39,7 @@ def run():
     st.markdown(
         """
         <div style="text-align: center;">
-            <img src="static/header1.png" alt="Brick Cracks Detection" style="width:300px;">
+            <img src="static/header1r.png" alt="Brick Cracks Detection" style="width:300px;">
         </div>
         """,
         unsafe_allow_html=True
