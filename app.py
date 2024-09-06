@@ -26,7 +26,6 @@ def main():
     st.sidebar.markdown("### ")
     st.sidebar.markdown("### ")
     st.sidebar.markdown("### ")
-    st.sidebar.markdown("### ")
     st.sidebar.title("Navigation")
     st.sidebar.markdown("### BrickSense Versions:")
     
