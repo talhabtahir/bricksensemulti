@@ -20,8 +20,16 @@ def main():
     if 'selected_page' not in st.session_state:
         st.session_state.selected_page = list(PAGES.keys())[0]  # Default to the first page
 
-    # Sidebar navigation with icons
-    st.sidebar.image("static/crackedwall1.png", width=200)
+    # Sidebar navigation with a centered image
+    st.sidebar.markdown(
+        """
+        <div style="text-align: center;">
+            <img src='static/crackedwall1.png' width=150>
+        </div>
+        """, unsafe_allow_html=True
+    )
+    # # Sidebar navigation with icons
+    # st.sidebar.image("static/crackedwall1.png", width=200)
     st.sidebar.title("Navigation")
     st.sidebar.markdown("### Select a Page:")
     
