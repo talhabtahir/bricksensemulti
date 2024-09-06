@@ -56,7 +56,7 @@ def run():
     # Sidebar for app information
     st.sidebar.header("About This App")
     st.sidebar.write("""
-    The Brick Crack Detection App is an AI-powered solution designed to identify cracks and classify brick walls using advanced computer vision techniques. The app leverages a Convolutional Neural Network (CNN) pre-trained model that has been fine-tuned using a large dataset of approximately 200,000 images. This extensive dataset ensures high accuracy and robust performance in real-world scenarios, enabling the app to accurately classify both single and multiple images simultaneously.
+    This version of Brick Sense is an AI-powered solution designed to identify cracks and classify brick walls using advanced computer vision techniques. The app leverages a Convolutional Neural Network (CNN) pre-trained model that has been fine-tuned using a large dataset of approximately 200,000 images. This extensive dataset ensures high accuracy and robust performance in real-world scenarios, enabling the app to accurately classify both single and multiple images simultaneously.
     """)
     st.sidebar.write("""
     **Developed by:**  
