@@ -37,31 +37,9 @@ def run():
         # Header with an icon
         # Header with an icon
         # st.markdown("<h1 class='main-header'>🧱 Brick Detection 🧱</h1>", unsafe_allow_html=True)
-        # # Display logo instead of header
-        # imagelogo = Image.open("static/header3r.png")
-        # st.image(imagelogo, use_column_width=True, width=700)  # Update the path to your logo file
-        # Create a custom div with CSS to center the image
-        # Display logo instead of header
         # Display logo instead of header
         imagelogo = Image.open("static/header3r.png")
-        
-        # Use markdown to center the image
-        st.markdown(
-            """
-            <style>
-            .centered-image {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 100px; /* Set the width manually */
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-        
-        # Now display the image using st.image with the width parameter set to None to avoid stretching
-        st.image(imagelogo, width=None, caption="", output_format="auto", use_column_width=False)
+        st.image(imagelogo, use_column_width=True, width=600)  # Update the path to your logo file
 
         # Add space below the logo
         st.write("")  # Creates a blank line
