@@ -25,6 +25,10 @@ def main():
     st.sidebar.image("static/sidelogo.png", width=200, use_column_width=True)
     st.write("")
     st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     st.sidebar.title("Navigation")
     st.sidebar.markdown("### Select a Page:")
     
