@@ -48,7 +48,7 @@ def run():
     
     # Sidebar for app information
     with st.sidebar.expander("About the Version"):
-        st.sidebar.write("""
+        st.write("""
         This version of BrickSense App is a powerful tool designed to automatically detect cracks 
         in brick walls, leveraging cutting-edge deep learning technique. Built using a Convolutional 
         Neural Network (CNN) model pre-trained on a dataset of more than 150,000 images, the app 
@@ -56,7 +56,7 @@ def run():
         can analyze and classify a single image at a time, under three categoies namely noraml, cracked 
         and not a wall, making it easy for users to quickly check the condition of brick structures in real-time.
         """)
-        st.sidebar.write("""
+        st.write("""
         **Developed by:**  
         Talha Bin Tahir  
         **Email:** talhabtahir@gmail.com
