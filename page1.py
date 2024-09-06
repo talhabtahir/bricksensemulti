@@ -32,8 +32,18 @@ def run():
         unsafe_allow_html=True
     )
     
-    # Header with an icon
-    st.markdown("<h1 class='main-header'>🧱 Brick Cracks Detection 🧱</h1>", unsafe_allow_html=True)
+    # # Header with an icon
+    # st.markdown("<h1 class='main-header'>🧱 Brick Cracks Detection 🧱</h1>", unsafe_allow_html=True)
+  
+    # Header with an image (centered)
+    st.markdown(
+        """
+        <div style="text-align: center;">
+            <img src="static/header1.png" alt="Brick Cracks Detection" style="width:300px;">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     
     @st.cache_resource
     def load_model():
