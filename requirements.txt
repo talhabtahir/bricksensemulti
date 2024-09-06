@@ -6,6 +6,4 @@ torch
 opencv-python-headless
 ultralytics
 importlib
-mesa-libGL
-libgl1-mesa-glx
 
