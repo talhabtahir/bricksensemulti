@@ -38,9 +38,12 @@ def run():
     # Header with an image (centered)
     # Display logo instead of header
     st.image("static/header1.png", use_column_width=True)  # Update the path to your logo file
-    st.empty()
-    st.empty()
-    st.empty()
+
+    # Add space below the logo
+    st.write("")  # Creates a blank line
+    st.write(" ")  # Creates an extra line for more space
+    st.write(" ")  # Adjust the number of empty lines for desired spacing
+    
     @st.cache_resource
     def load_model():
         try:
