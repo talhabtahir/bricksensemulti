@@ -23,18 +23,16 @@ def main():
    
     # Sidebar navigation with icons
     st.sidebar.image("static/sidelogo.png", width=200, use_column_width=True)
-    st.write(" ")
-    st.write(" ")
-    st.write(" ")
-    st.write(" ")
-    st.write(" ")
-    st.write(" ")
+    st.sidebar.markdown("### ")
+    st.sidebar.markdown("### ")
+    st.sidebar.markdown("### ")
+    st.sidebar.markdown("### ")
     st.sidebar.title("Navigation")
-    st.sidebar.markdown("### Select a Page:")
+    st.sidebar.markdown("### BrickSense Versions:")
     
     # Use selectbox for better user experience
     page = st.sidebar.selectbox(
-        "Choose a page to visit:",
+        "Choose a version to load:",
         list(PAGES.keys()),
         index=list(PAGES.keys()).index(st.session_state.selected_page)
     )
