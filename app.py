@@ -11,7 +11,7 @@ st.set_page_config(
 # Define the pages with corresponding icons
 PAGES = {
     "BrickSense Single ☝️": "page1",
-    "BrickSense Multiple ✌️": "page2",
+    "BrickSense Multi ✌️": "page2",
     "BrickSense Augmented ✋": "page3"
 }
 
