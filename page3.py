@@ -111,7 +111,6 @@ def run():
     #     results = yolo_model(img_rgb)
     #     return results.pandas().xyxy[0]
     def analyze_with_yolo(image_path):
-    try:
         img_cv2 = cv2.imread(image_path)
         if img_cv2 is None:
             st.error(f"Error: Could not open or find the image at {image_path}")
