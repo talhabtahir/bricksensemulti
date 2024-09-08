@@ -102,14 +102,32 @@ def run():
         prediction = model.predict(img_reshape)
         return prediction
 
+    # def analyze_with_yolo(image_path):
+    #     img_cv2 = cv2.imread(image_path)
+    #     if img_cv2 is None:
+    #         st.error(f"Error: Could not open or find the image at {image_path}")
+    #         return None
+    #     img_rgb = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
+    #     results = yolo_model(img_rgb)
+    #     return results.pandas().xyxy[0]
     def analyze_with_yolo(image_path):
+    try:
         img_cv2 = cv2.imread(image_path)
         if img_cv2 is None:
             st.error(f"Error: Could not open or find the image at {image_path}")
             return None
         img_rgb = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
+        img_rgb = np.ascontiguousarray(img_rgb)
         results = yolo_model(img_rgb)
-        return results.pandas().xyxy[0]
+        results_df = results.pandas().xyxy[0]
+        if not results_df.empty:
+            # Add confidence as a percentage
+            results_df['confidence_percentage'] = results_df['confidence'] * 100
+        return results_df
+    except Exception as e:
+        st.error(f"An error occurred during YOLO analysis: {e}")
+        return None
+
 
     def import_and_predict_imagenet(image_data, model):
         size = (224, 224)
@@ -147,9 +165,17 @@ def run():
                 st.warning(f"⚠️ This is not a brick wall. Proceeding with YOLO and ImageNet detection.")
 
                 yolo_results = analyze_with_yolo(image_path)
+                # if yolo_results is not None and not yolo_results.empty:
+                #     st.write("#### YOLOv5 Classification Results:")
+                #     st.write(f"YOLOv5 detected: {', '.join(yolo_results['name'].unique().tolist())}")
+                    
                 if yolo_results is not None and not yolo_results.empty:
                     st.write("#### YOLOv5 Classification Results:")
-                    st.write(f"YOLOv5 detected: {', '.join(yolo_results['name'].unique().tolist())}")
+                    for idx, row in yolo_results.iterrows():
+                        class_name = row['name'].capitalize()
+                        confidence = row['confidence_percentage']
+                        st.write(f"Class: {class_name}, Confidence: {confidence:.2f}%")
+
 
                 imagenet_predictions = import_and_predict_imagenet(image, imagenet_model)
                 if imagenet_predictions:
