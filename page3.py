@@ -111,21 +111,22 @@ def run():
     #     results = yolo_model(img_rgb)
     #     return results.pandas().xyxy[0]
     def analyze_with_yolo(image_path):
-        img_cv2 = cv2.imread(image_path)
-        if img_cv2 is None:
-            st.error(f"Error: Could not open or find the image at {image_path}")
+        try:
+            img_cv2 = cv2.imread(image_path)
+            if img_cv2 is None:
+                st.error(f"Error: Could not open or find the image at {image_path}")
+                return None
+            img_rgb = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
+            img_rgb = np.ascontiguousarray(img_rgb)
+            results = yolo_model(img_rgb)
+            results_df = results.pandas().xyxy[0]
+            if not results_df.empty:
+                # Add confidence as a percentage
+                results_df['confidence_percentage'] = results_df['confidence'] * 100
+            return results_df
+        except Exception as e:
+            st.error(f"An error occurred during YOLO analysis: {e}")
             return None
-        img_rgb = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
-        img_rgb = np.ascontiguousarray(img_rgb)
-        results = yolo_model(img_rgb)
-        results_df = results.pandas().xyxy[0]
-        if not results_df.empty:
-            # Add confidence as a percentage
-            results_df['confidence_percentage'] = results_df['confidence'] * 100
-        return results_df
-    except Exception as e:
-        st.error(f"An error occurred during YOLO analysis: {e}")
-        return None
 
 
     def import_and_predict_imagenet(image_data, model):
