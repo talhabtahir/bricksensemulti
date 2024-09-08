@@ -48,7 +48,7 @@ def run():
         
         @st.cache_resource
         def load_model():
-            return tf.keras.models.load_model('Kg_33kmodelv37_basev4.keras')
+            return tf.keras.models.load_model('170kmodelv9_version_cam_1.keras')
         
         @st.cache_resource
         def load_yolo_model():
@@ -228,15 +228,25 @@ def run():
                         # st.info("Neither YOLOv5 nor ImageNet detected relevant classes with high confidence. Proceeding with TensorFlow model prediction.")
                         predictions = import_and_predict(image, model)
                         if predictions is not None:
-                            probability = predictions[0][0]
-                            if probability > 0.5:
-                                predicted_class = "cracked"
-                                st.error(f"⚠️ This brick wall is {predicted_class}.")
-                                st.write(f"**Predicted Probability:** {probability * 100:.2f}% cracked.")
+                            predicted_class = np.argmax(predictions[0])  # Get the class with the highest probability
+                            prediction_percentages = predictions[0] * 100  # Convert to percentages
+                            
+                            # Display prediction percentages for each class
+                            st.write(f"**Prediction Percentages:**")
+                            st.write(f"Normal Wall: {prediction_percentages[0]:.2f}%")
+                            st.write(f"Cracked Wall: {prediction_percentages[1]:.2f}%")
+                            st.write(f"Not a Wall: {prediction_percentages[2]:.2f}%")
+                            
+                            # Display the predicted class
+                            if predicted_class == 0:
+                                st.success(f"✅ This is a normal brick wall.")
+                            elif predicted_class == 1:
+                                st.error(f"❌ This wall is a cracked brick wall.")
+                            elif predicted_class == 2:
+                                st.warning(f"⚠️ This is not a brick wall.")
                             else:
-                                predicted_class = "normal"
-                                st.success(f"✅ This brick wall is {predicted_class}.")
-                                st.write(f"**Predicted Probability:** {(1 - probability) * 100:.2f}% normal.")
+                                st.error(f"❓ Unknown prediction result: {predicted_class}")
+            
             
             except Exception as e:
                 st.error(f"Error processing the uploaded image: {e}")
