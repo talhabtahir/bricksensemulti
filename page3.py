@@ -59,7 +59,7 @@ def run():
 
     @st.cache_resource
     def load_model():
-        return tf.keras.models.load_model('170kmodelv9_version_cam_1.keras')
+        return tf.keras.models.load_model('170kmodelv10_version_cam_1.keras')
 
     @st.cache_resource
     def load_yolo_model():
