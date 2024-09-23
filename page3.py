@@ -161,7 +161,7 @@ def run():
             st.write(f"Not a Wall: {prediction_percentages[2]:.2f}%")
 
             # Step 2: Proceed with YOLO and ImageNet if predicted as "Not a Wall"
-            if predicted_class == 2:
+            if predicted_class == 2 or predicted_class == 1:
                 st.warning(f"⚠️ This is not a brick wall. Proceeding with YOLO and ImageNet detection.")
 
                 yolo_results = analyze_with_yolo(image_path)
