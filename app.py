@@ -22,7 +22,7 @@ def main():
 
    
     # Sidebar navigation with icons
-    st.sidebar.image("static/sidelogo.png", width=200, use_column_width=True)
+    st.sidebar.image("static/sidelogo.png", width=200, use_container_width=True)
     st.sidebar.markdown("### ")
     st.sidebar.markdown("### ")
     st.sidebar.markdown("### ")
